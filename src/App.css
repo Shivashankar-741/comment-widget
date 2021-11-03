@@ -143,3 +143,8 @@
 .widget__comment--parent-comment-like-reply {
   margin-left: 10px;
 }
+
+.widget__comment--child {
+  max-width: 90%;
+  margin: 0 auto;
+}

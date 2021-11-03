@@ -32,138 +32,611 @@ function App() {
           </div>
         </div>
         <div className="widget__comment">
-          <div className="widget__comment--parent">
-            <div className="widget__comment--parent-icon">
-              <BiUser />
+          {/* grandparent */}
+          <div className="widget__comment-grandparent">
+            {/* parent */}
+            <div className="widget__comment--parent">
+              <div className="widget__comment--parent-icon">
+                <BiUser />
+              </div>
+              <div className="widget__comment--parent-comment">
+                <div className="widget__comment--parent-comment-user">
+                  <div className="widget__comment--parent-comment-user-left">
+                    <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
+                    <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+                  </div>
+                  <div className="widget__comment--parent-comment-user-right">
+                    <div className="widget__comment--parent-comment-user-right-edit">
+                      <AiFillEdit />
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right-delete">
+                      <MdDeleteForever />
+                    </div>
+                  </div>
+                </div>
+                <div className="widget__comment--parent-comment-message">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                  assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
+                  reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium
+                  culpa.
+                </div>
+                <div className="widget__comment--parent-comment-like">
+                  <div className="widget__comment--parent-comment-like-like">
+                    <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-like-icon">
+                      <AiFillLike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-dislike">
+                    <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-dislike-icon">
+                      <AiFillDislike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-reply">
+                    <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="widget__comment--parent-comment">
-              <div className="widget__comment--parent-comment-user">
-                <div className="widget__comment--parent-comment-user-left">
-                  <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
-                  <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-user-right">
-                  <div className="widget__comment--parent-comment-user-right-edit">
-                    <AiFillEdit />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                  <div className="widget__comment--parent-comment-user-right-delete">
-                    <MdDeleteForever />
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="widget__comment--parent-comment-message">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
-                assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
-                reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium culpa.
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
+                </div>
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="widget__comment--parent-comment-like">
-                <div className="widget__comment--parent-comment-like-like">
-                  <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-like-icon">
-                    <AiFillLike />
-                  </div>
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-like-dislike">
-                  <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-dislike-icon">
-                    <AiFillDislike />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="widget__comment--parent-comment-like-reply">
-                  <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* start */}
-          <div className="widget__comment--parent">
-            <div className="widget__comment--parent-icon">
-              <BiUser />
+          {/* grandparent */}
+          <div className="widget__comment-grandparent">
+            {/* parent */}
+            <div className="widget__comment--parent">
+              <div className="widget__comment--parent-icon">
+                <BiUser />
+              </div>
+              <div className="widget__comment--parent-comment">
+                <div className="widget__comment--parent-comment-user">
+                  <div className="widget__comment--parent-comment-user-left">
+                    <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
+                    <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+                  </div>
+                  <div className="widget__comment--parent-comment-user-right">
+                    <div className="widget__comment--parent-comment-user-right-edit">
+                      <AiFillEdit />
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right-delete">
+                      <MdDeleteForever />
+                    </div>
+                  </div>
+                </div>
+                <div className="widget__comment--parent-comment-message">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                  assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
+                  reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium
+                  culpa.
+                </div>
+                <div className="widget__comment--parent-comment-like">
+                  <div className="widget__comment--parent-comment-like-like">
+                    <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-like-icon">
+                      <AiFillLike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-dislike">
+                    <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-dislike-icon">
+                      <AiFillDislike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-reply">
+                    <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="widget__comment--parent-comment">
-              <div className="widget__comment--parent-comment-user">
-                <div className="widget__comment--parent-comment-user-left">
-                  <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
-                  <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-user-right">
-                  <div className="widget__comment--parent-comment-user-right-edit">
-                    <AiFillEdit />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                  <div className="widget__comment--parent-comment-user-right-delete">
-                    <MdDeleteForever />
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="widget__comment--parent-comment-message">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
-                assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
-                reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium culpa.
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
+                </div>
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="widget__comment--parent-comment-like">
-                <div className="widget__comment--parent-comment-like-like">
-                  <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-like-icon">
-                    <AiFillLike />
-                  </div>
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-like-dislike">
-                  <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-dislike-icon">
-                    <AiFillDislike />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="widget__comment--parent-comment-like-reply">
-                  <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="widget__comment--parent">
-            <div className="widget__comment--parent-icon">
-              <BiUser />
+
+          {/* grandparent */}
+          <div className="widget__comment-grandparent">
+            {/* parent */}
+            <div className="widget__comment--parent">
+              <div className="widget__comment--parent-icon">
+                <BiUser />
+              </div>
+              <div className="widget__comment--parent-comment">
+                <div className="widget__comment--parent-comment-user">
+                  <div className="widget__comment--parent-comment-user-left">
+                    <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
+                    <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+                  </div>
+                  <div className="widget__comment--parent-comment-user-right">
+                    <div className="widget__comment--parent-comment-user-right-edit">
+                      <AiFillEdit />
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right-delete">
+                      <MdDeleteForever />
+                    </div>
+                  </div>
+                </div>
+                <div className="widget__comment--parent-comment-message">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                  assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
+                  reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium
+                  culpa.
+                </div>
+                <div className="widget__comment--parent-comment-like">
+                  <div className="widget__comment--parent-comment-like-like">
+                    <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-like-icon">
+                      <AiFillLike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-dislike">
+                    <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                    <div className="widget__comment--parent-comment-like-dislike-icon">
+                      <AiFillDislike />
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-like-reply">
+                    <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="widget__comment--parent-comment">
-              <div className="widget__comment--parent-comment-user">
-                <div className="widget__comment--parent-comment-user-left">
-                  <h1 className="widget__comment--parent-comment-user-left-name">Clueless-Kun</h1>
-                  <h1 className="widget__comment--parent-comment-user-left-stamp">7 hours ago</h1>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-user-right">
-                  <div className="widget__comment--parent-comment-user-right-edit">
-                    <AiFillEdit />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                  <div className="widget__comment--parent-comment-user-right-delete">
-                    <MdDeleteForever />
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="widget__comment--parent-comment-message">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
-                assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis modi,
-                reprehenderit magnam. Vitae magni repellat minus voluptatibus, id accusantium culpa.
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
+                </div>
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="widget__comment--parent-comment-like">
-                <div className="widget__comment--parent-comment-like-like">
-                  <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-like-icon">
-                    <AiFillLike />
-                  </div>
+            </div>
+            {/* child */}
+            <div className="widget__comment--child">
+              <div className="widget__comment--parent">
+                <div className="widget__comment--parent-icon">
+                  <BiUser />
                 </div>
-                <div className="widget__comment--parent-comment-like-dislike">
-                  <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
-                  <div className="widget__comment--parent-comment-like-dislike-icon">
-                    <AiFillDislike />
+                <div className="widget__comment--parent-comment">
+                  <div className="widget__comment--parent-comment-user">
+                    <div className="widget__comment--parent-comment-user-left">
+                      <h1 className="widget__comment--parent-comment-user-left-name">
+                        Clueless-Kun
+                      </h1>
+                      <h1 className="widget__comment--parent-comment-user-left-stamp">
+                        7 hours ago
+                      </h1>
+                    </div>
+                    <div className="widget__comment--parent-comment-user-right">
+                      <div className="widget__comment--parent-comment-user-right-edit">
+                        <AiFillEdit />
+                      </div>
+                      <div className="widget__comment--parent-comment-user-right-delete">
+                        <MdDeleteForever />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="widget__comment--parent-comment-like-reply">
-                  <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                  <div className="widget__comment--parent-comment-message">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus minus
+                    assumenda recusandae eaque, consequuntur ipsam vero expedita quas reiciendis
+                    modi, reprehenderit magnam. Vitae magni repellat minus voluptatibus, id
+                    accusantium culpa.
+                  </div>
+                  <div className="widget__comment--parent-comment-like">
+                    <div className="widget__comment--parent-comment-like-like">
+                      <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-like-icon">
+                        <AiFillLike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-dislike">
+                      <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
+                      <div className="widget__comment--parent-comment-like-dislike-icon">
+                        <AiFillDislike />
+                      </div>
+                    </div>
+                    <div className="widget__comment--parent-comment-like-reply">
+                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* end */}
         </div>
       </div>
     </div>

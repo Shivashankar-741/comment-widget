@@ -10,7 +10,11 @@ export const pressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
 };
 
 export const likeHandler = () => {};
+
 export const disLikeHandler = () => {};
+
 export const replyHandler = () => {};
+
 export const editHandler = () => {};
+
 export const deleteHandler = () => {};
