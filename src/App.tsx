@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import { FaUsers } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
