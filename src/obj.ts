@@ -1,19 +1,19 @@
-export const obj: IObj = {
-  name: '',
-  message: '',
-  uuid: '',
-  like: 0,
-  disLike: 0,
-  date: '',
-  child: [],
-};
+// export const obj: IObj = {
+//   name: '',
+//   comment: '',
+//   id: '',
+//   like: 0,
+//   disLike: 0,
+//   date: '',
+//   child: [],
+// };
 
-interface IObj {
-  name: string;
-  message: string;
-  uuid: string;
+export interface IObj {
+  name: string | null;
+  comment: string;
+  id: string;
   like: number;
   disLike: number;
-  date: string;
-  child: [];
+  date: Date;
+  child: IObj[];
 }
