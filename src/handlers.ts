@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { IObj } from './obj';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,28 +17,47 @@ export const keyPressHandler = (
   comment: string,
   setComment: Dispatch<SetStateAction<string>>,
   users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  setUsers: Dispatch<React.SetStateAction<IObj[]>>,
+  commentEdit: boolean,
+  setCommentEdit: Dispatch<React.SetStateAction<boolean>>
 ) => {
   if (e.key === 'Enter') {
-    if (!(comment.length > 200) && comment !== '') {
-      let name = prompt('Drop your name here');
-      if (name) {
-        setUsers([
-          ...users,
-          {
-            name,
-            comment,
-            id: uuidv4(),
-            like: 0,
-            disLike: 0,
-            date: new Date(),
-            child: [],
-          },
-        ]);
+    if (!commentEdit) {
+      if (!(comment.length > 200) && comment !== '') {
+        let name = prompt('Drop your name here');
+        if (name) {
+          setUsers([
+            ...users,
+            {
+              name,
+              comment,
+              id: uuidv4(),
+              like: 0,
+              disLike: 0,
+              date: new Date(),
+              child: [],
+              isEdit: false,
+            },
+          ]);
+        }
+        setComment('');
+      } else {
+        alert('Your comment length should be less than 200 :(');
       }
-      setComment('');
     } else {
-      alert('Your comment length should be less than 200 :(');
+      const u = users.reduce((acc: IObj[], user: IObj) => {
+        if (user.isEdit) {
+          user.comment = comment;
+          user.isEdit = false;
+          acc.push(user);
+        } else {
+          acc.push(user);
+        }
+        return acc;
+      }, []);
+      setUsers(u);
+      setCommentEdit(false);
+      setComment('');
     }
   }
 };
@@ -83,11 +102,16 @@ export const editHandler = (
   id: string,
   users: IObj[],
   setUsers: Dispatch<React.SetStateAction<IObj[]>>,
-  setComment: Dispatch<SetStateAction<string>>
+  setComment: Dispatch<SetStateAction<string>>,
+  setCommentEdit: Dispatch<React.SetStateAction<boolean>>,
+  inputRef: MutableRefObject<HTMLInputElement | null>
 ) => {
-  let comment = users.find((user) => user.id === id)?.comment;
+  let comment = users.find((user) => user.id === id);
   if (comment) {
-    setComment(comment);
+    comment.isEdit = true;
+    setComment(comment.comment);
+    setCommentEdit(true);
+    inputRef.current?.focus();
   }
 };
 

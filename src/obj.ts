@@ -16,4 +16,5 @@ export interface IObj {
   disLike: number;
   date: Date;
   child: IObj[];
+  isEdit: boolean;
 }

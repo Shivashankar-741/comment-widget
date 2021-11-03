@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { FaUsers } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
@@ -19,7 +19,9 @@ import moment from 'moment';
 
 function App() {
   const [comment, setComment] = useState('');
+  const [commentEdit, setCommentEdit] = useState(false);
   const [users, setUsers] = useState<IObj[] | []>([]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <div className="App">
@@ -35,7 +37,18 @@ function App() {
               placeholder="Join the discussion..."
               value={comment}
               onChange={(e) => changeHandler(e, comment, setComment, users, setUsers)}
-              onKeyPress={(e) => keyPressHandler(e, comment, setComment, users, setUsers)}
+              onKeyPress={(e) =>
+                keyPressHandler(
+                  e,
+                  comment,
+                  setComment,
+                  users,
+                  setUsers,
+                  commentEdit,
+                  setCommentEdit
+                )
+              }
+              ref={inputRef}
             />
           </div>
         </div>
@@ -61,7 +74,16 @@ function App() {
                     <div className="widget__comment--parent-comment-user-right">
                       <div
                         className="widget__comment--parent-comment-user-right-edit"
-                        onClick={() => editHandler(user.id, users, setUsers, setComment)}
+                        onClick={() =>
+                          editHandler(
+                            user.id,
+                            users,
+                            setUsers,
+                            setComment,
+                            setCommentEdit,
+                            inputRef
+                          )
+                        }
                       >
                         <AiFillEdit />
                       </div>
