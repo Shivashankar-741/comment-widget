@@ -6,7 +6,7 @@ import { AiFillEdit } from 'react-icons/ai';
 import { AiFillLike } from 'react-icons/ai';
 import { AiFillDislike } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
-import { IObj } from './obj';
+import { IUser } from './interface/obj';
 import {
   changeHandler,
   keyPressHandler,
@@ -20,7 +20,7 @@ import moment from 'moment';
 function App() {
   const [comment, setComment] = useState<string>('');
   const [commentEdit, setCommentEdit] = useState<boolean>(false);
-  const [users, setUsers] = useState<IObj[] | []>([]);
+  const [users, setUsers] = useState<IUser[] | []>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (

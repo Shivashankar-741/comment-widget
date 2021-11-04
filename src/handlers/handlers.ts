@@ -1,13 +1,13 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { IObj } from '../obj';
+import { IUser } from '../interface/obj';
 import { likeAndDisLikeHelper, newCommentHelper, editCommentHelper } from '../helpers/helpers';
 
 export const changeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
   comment: string,
   setComment: Dispatch<SetStateAction<string>>,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   setComment(e.target.value);
 };
@@ -16,8 +16,8 @@ export const keyPressHandler = (
   e: React.KeyboardEvent<HTMLInputElement>,
   comment: string,
   setComment: Dispatch<SetStateAction<string>>,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>,
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>,
   commentEdit: boolean,
   setCommentEdit: Dispatch<React.SetStateAction<boolean>>
 ) => {
@@ -32,8 +32,8 @@ export const keyPressHandler = (
 
 export const likeHandler = (
   id: string,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   const likedUsers = likeAndDisLikeHelper(id, users, 'like');
   setUsers(likedUsers);
@@ -41,8 +41,8 @@ export const likeHandler = (
 
 export const disLikeHandler = (
   id: string,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   const disLikedUsers = likeAndDisLikeHelper(id, users, 'disLike');
   setUsers(disLikedUsers);
@@ -52,8 +52,8 @@ export const replyHandler = () => {};
 
 export const editHandler = (
   id: string,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>,
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>,
   setComment: Dispatch<SetStateAction<string>>,
   setCommentEdit: Dispatch<React.SetStateAction<boolean>>,
   inputRef: MutableRefObject<HTMLInputElement | null>
@@ -69,8 +69,8 @@ export const editHandler = (
 
 export const deleteHandler = (
   id: string,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   users = users.filter((user) => user.id !== id);
   setUsers(users);

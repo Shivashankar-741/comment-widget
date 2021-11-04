@@ -1,9 +1,9 @@
-import { IObj } from '../obj';
+import { IUser } from '../interface/obj';
 import { v4 as uuidv4 } from 'uuid';
 import { Dispatch, SetStateAction } from 'react';
 
-export const likeAndDisLikeHelper = (id: string, users: IObj[], action: string) => {
-  return users.reduce((acc: IObj[], user: IObj) => {
+export const likeAndDisLikeHelper = (id: string, users: IUser[], action: string) => {
+  return users.reduce((acc: IUser[], user: IUser) => {
     if (user.id === id) {
       if (action === 'like') {
         user.like++;
@@ -21,8 +21,8 @@ export const likeAndDisLikeHelper = (id: string, users: IObj[], action: string) 
 export const newCommentHelper = (
   comment: string,
   setComment: Dispatch<SetStateAction<string>>,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   if (!(comment.length > 200) && comment !== '') {
     let name = prompt('Drop your name here');
@@ -50,11 +50,11 @@ export const newCommentHelper = (
 export const editCommentHelper = (
   comment: string,
   setComment: Dispatch<SetStateAction<string>>,
-  users: IObj[],
-  setUsers: Dispatch<React.SetStateAction<IObj[]>>,
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>,
   setCommentEdit: Dispatch<React.SetStateAction<boolean>>
 ) => {
-  const u = users.reduce((acc: IObj[], user: IObj) => {
+  const u = users.reduce((acc: IUser[], user: IUser) => {
     if (user.isEdit) {
       user.comment = comment;
       user.isEdit = false;
