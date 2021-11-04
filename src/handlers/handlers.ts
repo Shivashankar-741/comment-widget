@@ -1,6 +1,11 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { IUser } from '../interface/obj';
-import { likeAndDisLikeHelper, newCommentHelper, editCommentHelper } from '../helpers/helpers';
+import { IReply, IUser } from '../interface/obj';
+import {
+  likeAndDisLikeHelper,
+  newCommentHelper,
+  editCommentHelper,
+  replyCommentHelper,
+} from '../helpers/helpers';
 
 export const changeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
@@ -18,14 +23,21 @@ export const keyPressHandler = (
   setComment: Dispatch<SetStateAction<string>>,
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>,
-  commentEdit: boolean,
-  setCommentEdit: Dispatch<React.SetStateAction<boolean>>
+  editComment: boolean,
+  setEditComment: Dispatch<React.SetStateAction<boolean>>,
+  replyComment: IReply,
+  setReplyComment: Dispatch<React.SetStateAction<IReply>>
 ) => {
   if (e.key === 'Enter') {
-    if (!commentEdit) {
+    if (!editComment && !replyComment.isReply) {
+      console.log('new comment');
       newCommentHelper(comment, setComment, users, setUsers);
+    } else if (replyComment?.isReply) {
+      console.log('reply comment');
+      replyCommentHelper(replyComment, setReplyComment);
     } else {
-      editCommentHelper(comment, setComment, users, setUsers, setCommentEdit);
+      console.log('edit comment');
+      editCommentHelper(comment, setComment, users, setUsers, setEditComment);
     }
   }
 };
@@ -48,21 +60,29 @@ export const disLikeHandler = (
   setUsers(disLikedUsers);
 };
 
-export const replyHandler = () => {};
+export const replyHandler = (
+  id: string,
+  inputRef: MutableRefObject<HTMLInputElement | null>,
+  setReplyComment: Dispatch<React.SetStateAction<IReply>>
+) => {
+  console.log(id);
+  inputRef.current?.focus();
+  setReplyComment({ isReply: true, id });
+};
 
 export const editHandler = (
   id: string,
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>,
   setComment: Dispatch<SetStateAction<string>>,
-  setCommentEdit: Dispatch<React.SetStateAction<boolean>>,
+  setEditComment: Dispatch<React.SetStateAction<boolean>>,
   inputRef: MutableRefObject<HTMLInputElement | null>
 ) => {
   let comment = users.find((user) => user.id === id);
   if (comment) {
     comment.isEdit = true;
     setComment(comment.comment);
-    setCommentEdit(true);
+    setEditComment(true);
     inputRef.current?.focus();
   }
 };
@@ -74,4 +94,16 @@ export const deleteHandler = (
 ) => {
   users = users.filter((user) => user.id !== id);
   setUsers(users);
+};
+
+export const sortByRecent = (users: IUser[], setUsers: Dispatch<React.SetStateAction<IUser[]>>) => {
+  const sortedComments = users.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  setUsers(sortedComments);
+};
+
+export const sortByLikes = (users: IUser[], setUsers: Dispatch<React.SetStateAction<IUser[]>>) => {
+  const sortedComments = users.sort((a, b) => b.like - a.like);
+  setUsers(sortedComments);
 };

@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import './App.css';
+import React, { useEffect, useRef, useState } from 'react';
+import './styles/App.css';
 import { FaUsers } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
 import { AiFillEdit } from 'react-icons/ai';
 import { AiFillLike } from 'react-icons/ai';
 import { AiFillDislike } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
-import { IUser } from './interface/obj';
+import { IUser, IReply, replyObj } from './interface/obj';
 import {
   changeHandler,
   keyPressHandler,
@@ -14,14 +14,26 @@ import {
   disLikeHandler,
   editHandler,
   deleteHandler,
+  sortByRecent,
+  sortByLikes,
+  replyHandler,
 } from './handlers/handlers';
 import moment from 'moment';
 
 function App() {
   const [comment, setComment] = useState<string>('');
-  const [commentEdit, setCommentEdit] = useState<boolean>(false);
+  const [editComment, setEditComment] = useState<boolean>(false);
+  const [replyComment, setReplyComment] = useState<IReply>(replyObj);
   const [users, setUsers] = useState<IUser[] | []>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  console.log(editComment);
+  console.log(replyComment);
+
+  // useEffect(() => {
+  //   console.log('effect');
+  //   sortByLikes(users, setUsers);
+  // }, [users]);
 
   return (
     <div className="App">
@@ -44,8 +56,10 @@ function App() {
                   setComment,
                   users,
                   setUsers,
-                  commentEdit,
-                  setCommentEdit
+                  editComment,
+                  setEditComment,
+                  replyComment,
+                  setReplyComment
                 )
               }
               ref={inputRef}
@@ -55,7 +69,7 @@ function App() {
         <div className="widget__comment">
           {/* grandparent */}
           {users.map((user) => (
-            <div className="widget__comment-grandparent">
+            <div key={user.id} className="widget__comment-grandparent">
               {/* parent */}
               <div className="widget__comment--parent">
                 <div className="widget__comment--parent-icon">
@@ -80,7 +94,7 @@ function App() {
                             users,
                             setUsers,
                             setComment,
-                            setCommentEdit,
+                            setEditComment,
                             inputRef
                           )
                         }
@@ -120,7 +134,12 @@ function App() {
                       </div>
                     </div>
                     <div className="widget__comment--parent-comment-like-reply">
-                      <h1 className="widget__comment--parent-comment-like-reply-in">Reply</h1>
+                      <h1
+                        onClick={() => replyHandler(user.id, inputRef, setReplyComment)}
+                        className="widget__comment--parent-comment-like-reply-in"
+                      >
+                        Reply
+                      </h1>
                     </div>
                   </div>
                 </div>

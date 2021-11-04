@@ -8,3 +8,13 @@ export interface IUser {
   child: IUser[];
   isEdit: boolean;
 }
+
+export interface IReply {
+  isReply: boolean;
+  id: string;
+}
+
+export const replyObj = {
+  isReply: false,
+  id: '',
+};

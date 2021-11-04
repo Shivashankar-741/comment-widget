@@ -1,4 +1,4 @@
-import { IUser } from '../interface/obj';
+import { IReply, IUser } from '../interface/obj';
 import { v4 as uuidv4 } from 'uuid';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -52,7 +52,7 @@ export const editCommentHelper = (
   setComment: Dispatch<SetStateAction<string>>,
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>,
-  setCommentEdit: Dispatch<React.SetStateAction<boolean>>
+  commentEdit: Dispatch<React.SetStateAction<boolean>>
 ) => {
   const u = users.reduce((acc: IUser[], user: IUser) => {
     if (user.isEdit) {
@@ -65,6 +65,15 @@ export const editCommentHelper = (
     return acc;
   }, []);
   setUsers(u);
-  setCommentEdit(false);
+  commentEdit(false);
   setComment('');
+};
+
+export const replyCommentHelper = (
+  replyComment: IReply,
+  setReplyComment: Dispatch<React.SetStateAction<IReply>>
+) => {
+  const { id: parentId } = replyComment;
+  console.log(parentId);
+  // setReplyComment({ isReply: false, id: '' });
 };
