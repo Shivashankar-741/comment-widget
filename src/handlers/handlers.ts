@@ -1,6 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { IObj } from './obj';
-import { v4 as uuidv4 } from 'uuid';
+import { IObj } from '../obj';
+import { likeAndDisLikeHelper, newCommentHelper, editCommentHelper } from '../helpers/helpers';
 
 export const changeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
@@ -23,59 +23,11 @@ export const keyPressHandler = (
 ) => {
   if (e.key === 'Enter') {
     if (!commentEdit) {
-      if (!(comment.length > 200) && comment !== '') {
-        let name = prompt('Drop your name here');
-        if (name) {
-          setUsers([
-            ...users,
-            {
-              name,
-              comment,
-              id: uuidv4(),
-              like: 0,
-              disLike: 0,
-              date: new Date(),
-              child: [],
-              isEdit: false,
-            },
-          ]);
-        }
-        setComment('');
-      } else {
-        alert('Your comment length should be less than 200 :(');
-      }
+      newCommentHelper(comment, setComment, users, setUsers);
     } else {
-      const u = users.reduce((acc: IObj[], user: IObj) => {
-        if (user.isEdit) {
-          user.comment = comment;
-          user.isEdit = false;
-          acc.push(user);
-        } else {
-          acc.push(user);
-        }
-        return acc;
-      }, []);
-      setUsers(u);
-      setCommentEdit(false);
-      setComment('');
+      editCommentHelper(comment, setComment, users, setUsers, setCommentEdit);
     }
   }
-};
-
-const likeAndDisLikeHandler = (id: string, users: IObj[], action: string) => {
-  return users.reduce((acc: IObj[], user: IObj) => {
-    if (user.id === id) {
-      if (action === 'like') {
-        user.like++;
-      } else if (action === 'disLike') {
-        user.disLike++;
-      }
-      acc.push(user);
-    } else {
-      acc.push(user);
-    }
-    return acc;
-  }, []);
 };
 
 export const likeHandler = (
@@ -83,7 +35,7 @@ export const likeHandler = (
   users: IObj[],
   setUsers: Dispatch<React.SetStateAction<IObj[]>>
 ) => {
-  const likedUsers = likeAndDisLikeHandler(id, users, 'like');
+  const likedUsers = likeAndDisLikeHelper(id, users, 'like');
   setUsers(likedUsers);
 };
 
@@ -92,7 +44,7 @@ export const disLikeHandler = (
   users: IObj[],
   setUsers: Dispatch<React.SetStateAction<IObj[]>>
 ) => {
-  const disLikedUsers = likeAndDisLikeHandler(id, users, 'disLike');
+  const disLikedUsers = likeAndDisLikeHelper(id, users, 'disLike');
   setUsers(disLikedUsers);
 };
 

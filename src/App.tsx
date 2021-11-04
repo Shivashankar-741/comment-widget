@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
 import { FaUsers } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
@@ -14,12 +14,12 @@ import {
   disLikeHandler,
   editHandler,
   deleteHandler,
-} from './handlers';
+} from './handlers/handlers';
 import moment from 'moment';
 
 function App() {
-  const [comment, setComment] = useState('');
-  const [commentEdit, setCommentEdit] = useState(false);
+  const [comment, setComment] = useState<string>('');
+  const [commentEdit, setCommentEdit] = useState<boolean>(false);
   const [users, setUsers] = useState<IObj[] | []>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
