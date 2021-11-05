@@ -30,13 +30,13 @@ export const keyPressHandler = (
 ) => {
   if (e.key === 'Enter') {
     if (!editComment && !replyComment.isReply) {
-      console.log('new comment');
+      // console.log('new comment');
       newCommentHelper(comment, setComment, users, setUsers);
     } else if (replyComment?.isReply) {
-      console.log('reply comment');
-      replyCommentHelper(replyComment, setReplyComment);
+      // console.log('reply comment');
+      replyCommentHelper(replyComment, setReplyComment, comment, setComment, users, setUsers);
     } else {
-      console.log('edit comment');
+      // console.log('edit comment');
       editCommentHelper(comment, setComment, users, setUsers, setEditComment);
     }
   }
@@ -47,8 +47,11 @@ export const likeHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  const likedUsers = likeAndDisLikeHelper(id, users, 'like');
-  setUsers(likedUsers);
+  // likeAndDisLikeHelper(id, users, setUsers, 'like');
+  // const likedUsers = likeAndDisLikeHelper(id, users, setUsers, 'like');
+  likeAndDisLikeHelper(id, users, setUsers, 'like');
+
+  // setUsers(likedUsers);
 };
 
 export const disLikeHandler = (
@@ -56,8 +59,10 @@ export const disLikeHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  const disLikedUsers = likeAndDisLikeHelper(id, users, 'disLike');
-  setUsers(disLikedUsers);
+  // const disLikedUsers = likeAndDisLikeHelper(id, users, setUsers, 'disLike');
+  likeAndDisLikeHelper(id, users, setUsers, 'disLike');
+
+  // setUsers(disLikedUsers);
 };
 
 export const replyHandler = (
@@ -65,7 +70,6 @@ export const replyHandler = (
   inputRef: MutableRefObject<HTMLInputElement | null>,
   setReplyComment: Dispatch<React.SetStateAction<IReply>>
 ) => {
-  console.log(id);
   inputRef.current?.focus();
   setReplyComment({ isReply: true, id });
 };
@@ -78,7 +82,21 @@ export const editHandler = (
   setEditComment: Dispatch<React.SetStateAction<boolean>>,
   inputRef: MutableRefObject<HTMLInputElement | null>
 ) => {
-  let comment = users.find((user) => user.id === id);
+  let comment: IUser | undefined;
+
+  function child(users: IUser[]) {
+    users.forEach((user) => {
+      if (user.id === id) {
+        comment = user;
+      } else if (user.child.length) {
+        child(user.child);
+      }
+    });
+  }
+  child(users);
+
+  console.log(comment);
+
   if (comment) {
     comment.isEdit = true;
     setComment(comment.comment);
@@ -96,14 +114,24 @@ export const deleteHandler = (
   setUsers(users);
 };
 
-export const sortByRecent = (users: IUser[], setUsers: Dispatch<React.SetStateAction<IUser[]>>) => {
+export const sortByRecentHandler = (
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
+) => {
   const sortedComments = users.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
   setUsers(sortedComments);
 };
 
-export const sortByLikes = (users: IUser[], setUsers: Dispatch<React.SetStateAction<IUser[]>>) => {
+export const sortByLikesHandler = (
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
+) => {
   const sortedComments = users.sort((a, b) => b.like - a.like);
   setUsers(sortedComments);
+};
+
+export const replyChildHandler = (childId: string) => {
+  console.log(childId);
 };
