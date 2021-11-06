@@ -8,35 +8,36 @@ export const likeAndDisLikeHelper = (
   setUsers: Dispatch<React.SetStateAction<IUser[]>>,
   action: string
 ) => {
-  // return users.reduce((acc: IUser[], user: IUser) => {
-  //   if (user.id === id) {
-  //     if (action === 'like') {
-  //       user.like++;
-  //     } else if (action === 'disLike') {
-  //       user.disLike++;
-  //     }
-  //     acc.push(user);
-  //   } else {
-  //     acc.push(user);
-  //   }
-  //   return acc;
-  // }, []);
-  function child(users: IUser[]) {
-    users.forEach((user) => {
-      if (user.id === id) {
-        if (action === 'like') {
-          user.like++;
-        } else if (action === 'disLike') {
-          user.disLike++;
-        }
-      } else if (user.child.length) {
-        child(user.child);
+  return users.reduce((acc: IUser[], user: IUser) => {
+    if (user.id === id) {
+      if (action === 'like') {
+        user.like++;
+      } else if (action === 'disLike') {
+        user.disLike++;
       }
-    });
-  }
-  child(users);
-  setUsers(users);
+      acc.push(user);
+    } else {
+      acc.push(user);
+    }
+    return acc;
+  }, []);
+  // let acc: IUser[];
+  // function child(users: IUser[]) {
+  //   users.forEach((user) => {
+  //     if (user.id === id) {
+  //       if (action === 'like') {
+  //         user.like++;
+  //       } else if (action === 'disLike') {
+  //         user.disLike++;
+  //       }
+  //     } else if (user.child.length) {
+  //       child(user.child);
+  //     }
+  //   });
+  // }
+  // child(users);
   // return users;
+  // setUsers(users);
 };
 
 export const newCommentHelper = (

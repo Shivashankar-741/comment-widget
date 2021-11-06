@@ -17,7 +17,6 @@ import {
   sortByRecentHandler,
   sortByLikesHandler,
   replyHandler,
-  replyChildHandler,
 } from './handlers/handlers';
 import moment from 'moment';
 
@@ -140,6 +139,9 @@ function App() {
                 </div>
               </div>
               {/* child */}
+              {/* {user.child.map((data) => (
+                <childFn data={data} />
+              ))} */}
               {user?.child.map((user) => (
                 <div key={user?.id} className="widget__comment--child">
                   <div className="widget__comment--parent">

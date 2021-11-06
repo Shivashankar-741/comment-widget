@@ -48,10 +48,8 @@ export const likeHandler = (
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   // likeAndDisLikeHelper(id, users, setUsers, 'like');
-  // const likedUsers = likeAndDisLikeHelper(id, users, setUsers, 'like');
-  likeAndDisLikeHelper(id, users, setUsers, 'like');
-
-  // setUsers(likedUsers);
+  const likedUsers = likeAndDisLikeHelper(id, users, setUsers, 'like');
+  setUsers(likedUsers);
 };
 
 export const disLikeHandler = (
@@ -59,10 +57,9 @@ export const disLikeHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  // const disLikedUsers = likeAndDisLikeHelper(id, users, setUsers, 'disLike');
-  likeAndDisLikeHelper(id, users, setUsers, 'disLike');
-
-  // setUsers(disLikedUsers);
+  // likeAndDisLikeHelper(id, users, setUsers, 'disLike');
+  const disLikedUsers = likeAndDisLikeHelper(id, users, setUsers, 'disLike');
+  setUsers(disLikedUsers);
 };
 
 export const replyHandler = (
