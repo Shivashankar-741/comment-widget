@@ -14,8 +14,8 @@ import {
   disLikeHandler,
   editHandler,
   deleteHandler,
-  sortByRecentHandler,
-  sortByLikesHandler,
+  // sortByRecentHandler,
+  // sortByLikesHandler,
   replyHandler,
 } from './handlers/handlers';
 import moment from 'moment';
