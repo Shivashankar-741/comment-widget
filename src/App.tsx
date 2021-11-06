@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import './styles/App.css';
 import { FaUsers } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
@@ -19,6 +19,7 @@ import {
   replyHandler,
 } from './handlers/handlers';
 import moment from 'moment';
+import { Child } from './components/child/child.component';
 
 function App() {
   const [comment, setComment] = useState<string>('');
@@ -65,6 +66,7 @@ function App() {
           {users.map((user) => (
             <div key={user.id} className="widget__comment-grandparent">
               {/* parent */}
+              {/* <Parent> */}
               <div className="widget__comment--parent">
                 <div className="widget__comment--parent-icon">
                   <BiUser />
@@ -139,81 +141,22 @@ function App() {
                 </div>
               </div>
               {/* child */}
-              {/* {user.child.map((data) => (
-                <childFn data={data} />
-              ))} */}
-              {user?.child.map((user) => (
-                <div key={user?.id} className="widget__comment--child">
-                  <div className="widget__comment--parent">
-                    <div className="widget__comment--parent-icon">
-                      <BiUser />
-                    </div>
-                    <div className="widget__comment--parent-comment">
-                      <div className="widget__comment--parent-comment-user">
-                        <div className="widget__comment--parent-comment-user-left">
-                          <h1 className="widget__comment--parent-comment-user-left-name">
-                            {user?.name}
-                          </h1>
-                          <h1 className="widget__comment--parent-comment-user-left-stamp">
-                            {moment(user?.date).fromNow()}
-                          </h1>
-                        </div>
-                        <div className="widget__comment--parent-comment-user-right">
-                          <div
-                            className="widget__comment--parent-comment-user-right-edit"
-                            onClick={() =>
-                              editHandler(
-                                user.id,
-                                users,
-                                setUsers,
-                                setComment,
-                                setEditComment,
-                                inputRef
-                              )
-                            }
-                          >
-                            <AiFillEdit />
-                          </div>
-                          <div
-                            className="widget__comment--parent-comment-user-right-delete"
-                            // onClick={deleteChildHandler}
-                          >
-                            <MdDeleteForever />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="widget__comment--parent-comment-message">{user?.comment}</div>
-                      <div className="widget__comment--parent-comment-like">
-                        <div className="widget__comment--parent-comment-like-like">
-                          <h1 className="widget__comment--parent-comment-like-like-count">0</h1>
-                          <div
-                            className="widget__comment--parent-comment-like-like-icon"
-                            onClick={() => likeHandler(user.id, users, setUsers)}
-                          >
-                            <AiFillLike />
-                          </div>
-                        </div>
-                        <div className="widget__comment--parent-comment-like-dislike">
-                          <h1 className="widget__comment--parent-comment-like-dislike-count">0</h1>
-                          <div
-                            className="widget__comment--parent-comment-like-dislike-icon"
-                            onClick={() => disLikeHandler(user.id, users, setUsers)}
-                          >
-                            <AiFillDislike />
-                          </div>
-                        </div>
-                        <div className="widget__comment--parent-comment-like-reply">
-                          <h1
-                            className="widget__comment--parent-comment-like-reply-in"
-                            onClick={() => replyHandler(user.id, inputRef, setReplyComment)}
-                          >
-                            Reply
-                          </h1>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              {user.child.map((data) => (
+                <Child
+                  data={data}
+                  key={data.id}
+                  editHandler={editHandler}
+                  users={users}
+                  setUsers={setUsers}
+                  setComment={setComment}
+                  setEditComment={setEditComment}
+                  inputRef={inputRef}
+                  deleteHandler={deleteHandler}
+                  likeHandler={likeHandler}
+                  disLikeHandler={disLikeHandler}
+                  replyHandler={replyHandler}
+                  setReplyComment={setReplyComment}
+                />
               ))}
             </div>
           ))}

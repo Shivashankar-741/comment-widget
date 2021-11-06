@@ -21,6 +21,7 @@ export const likeAndDisLikeHelper = (
     }
     return acc;
   }, []);
+
   // let acc: IUser[];
   // function child(users: IUser[]) {
   //   users.forEach((user) => {
@@ -119,7 +120,6 @@ export const replyCommentHelper = (
 
   if (!(comment.length > 200) && comment !== '') {
     let name = prompt('Drop your name here');
-    console.log(name);
     if (name) {
       childComment = {
         name,

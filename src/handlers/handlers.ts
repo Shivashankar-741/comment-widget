@@ -30,13 +30,10 @@ export const keyPressHandler = (
 ) => {
   if (e.key === 'Enter') {
     if (!editComment && !replyComment.isReply) {
-      // console.log('new comment');
       newCommentHelper(comment, setComment, users, setUsers);
     } else if (replyComment?.isReply) {
-      // console.log('reply comment');
       replyCommentHelper(replyComment, setReplyComment, comment, setComment, users, setUsers);
     } else {
-      // console.log('edit comment');
       editCommentHelper(comment, setComment, users, setUsers, setEditComment);
     }
   }
@@ -107,8 +104,37 @@ export const deleteHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  users = users.filter((user) => user.id !== id);
-  setUsers(users);
+  let u: IUser | undefined;
+
+  function childTwo(users: IUser[], id: string, ind: number) {
+    users.forEach((user: IUser) => {
+      if (user.id === id) {
+        console.log(user.child[ind]);
+        return user.child.splice(ind, 1);
+      } else if (user.child.length) {
+        childTwo(user.child, id, ind);
+      }
+    });
+  }
+
+  function child(users: IUser[]) {
+    users.forEach((user: IUser, ind) => {
+      if (user?.id === id) {
+        if (u === undefined) {
+          return users.splice(ind, 1);
+        } else {
+          childTwo(users, u.id, ind);
+        }
+      } else if (user?.child.length) {
+        u = user;
+        child(user?.child);
+      }
+      u = undefined;
+    });
+  }
+  child(users);
+  console.log(users);
+  // setUsers(users);
 };
 
 export const sortByRecentHandler = (
@@ -132,3 +158,18 @@ export const sortByLikesHandler = (
 export const replyChildHandler = (childId: string) => {
   console.log(childId);
 };
+
+// user = ;
+//  user = {
+//   name: 'string | null',
+//   comment: 'string',
+//   id: 'string',
+//   like: 12,
+//   disLike: 21,
+//   date: 'Sat Nov 06 2021 13:20:44 GMT+0530',
+//   child: [],
+//   isEdit: false,
+// };
+
+//   !Object.keys({}).length
+//    true
