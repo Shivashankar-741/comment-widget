@@ -61,6 +61,17 @@ export interface IChild {
 
 export interface IParent {
   user: IUser;
+  users: IUser[];
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>;
+  setComment: Dispatch<SetStateAction<string>>;
+  setReplyComment: Dispatch<React.SetStateAction<IReply>>;
+  setEditComment: Dispatch<React.SetStateAction<boolean>>;
+  inputRef: MutableRefObject<HTMLInputElement | null>;
+  deleteHandler: (
+    id: string,
+    users: IUser[],
+    setUsers: Dispatch<React.SetStateAction<IUser[]>>
+  ) => void;
   editHandler: (
     id: string,
     users: IUser[],
@@ -68,11 +79,6 @@ export interface IParent {
     setComment: Dispatch<SetStateAction<string>>,
     setEditComment: Dispatch<React.SetStateAction<boolean>>,
     inputRef: MutableRefObject<HTMLInputElement | null>
-  ) => void;
-  deleteHandler: (
-    id: string,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>
   ) => void;
   likeHandler: (
     id: string,
@@ -89,16 +95,18 @@ export interface IParent {
     inputRef: MutableRefObject<HTMLInputElement | null>,
     setReplyComment: Dispatch<React.SetStateAction<IReply>>
   ) => void;
-  users: IUser[];
-  setUsers: Dispatch<React.SetStateAction<IUser[]>>;
-  setComment: Dispatch<SetStateAction<string>>;
-  setEditComment: Dispatch<React.SetStateAction<boolean>>;
-  setReplyComment: Dispatch<React.SetStateAction<IReply>>;
-  inputRef: MutableRefObject<HTMLInputElement | null>;
 }
 
 export interface IInput {
+  users: IUser[];
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>;
   comment: string;
+  setComment: Dispatch<SetStateAction<string>>;
+  editComment: boolean;
+  setEditComment: Dispatch<React.SetStateAction<boolean>>;
+  replyComment: IReply;
+  setReplyComment: Dispatch<React.SetStateAction<IReply>>;
+  inputRef: MutableRefObject<HTMLInputElement | null>;
   changeHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
     comment: string,
@@ -106,9 +114,6 @@ export interface IInput {
     users: IUser[],
     setUsers: Dispatch<React.SetStateAction<IUser[]>>
   ) => void;
-  setComment: Dispatch<SetStateAction<string>>;
-  users: IUser[];
-  setUsers: Dispatch<React.SetStateAction<IUser[]>>;
   keyPressHandler: (
     e: React.KeyboardEvent<HTMLInputElement>,
     comment: string,
@@ -120,9 +125,4 @@ export interface IInput {
     replyComment: IReply,
     setReplyComment: Dispatch<React.SetStateAction<IReply>>
   ) => void;
-  editComment: boolean;
-  setEditComment: Dispatch<React.SetStateAction<boolean>>;
-  replyComment: IReply;
-  setReplyComment: Dispatch<React.SetStateAction<IReply>>;
-  inputRef: MutableRefObject<HTMLInputElement | null>;
 }
