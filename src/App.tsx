@@ -1,11 +1,5 @@
 import { useRef, useState } from 'react';
 import './styles/App.css';
-import { FaUsers } from 'react-icons/fa';
-import { BiUser } from 'react-icons/bi';
-import { AiFillEdit } from 'react-icons/ai';
-import { AiFillLike } from 'react-icons/ai';
-import { AiFillDislike } from 'react-icons/ai';
-import { MdDeleteForever } from 'react-icons/md';
 import { IUser, IReply, replyObj } from './interface/obj';
 import {
   changeHandler,
@@ -18,8 +12,9 @@ import {
   // sortByLikesHandler,
   replyHandler,
 } from './handlers/handlers';
-import moment from 'moment';
 import { Child } from './components/child/child.component';
+import { Parent } from './components/parent/parent.component';
+import { Inputfield } from './components/inputfield/inputfield';
 
 function App() {
   const [comment, setComment] = useState<string>('');
@@ -33,129 +28,56 @@ function App() {
   return (
     <div className="App">
       <div className="widget">
-        <div className="widget__input">
-          <div className="widget__input--icon">
-            <FaUsers />
-          </div>
-          <div className="widget__input--field">
-            <input
-              type="text"
-              className="widget__input--field-in"
-              placeholder="Join the discussion..."
-              value={comment}
-              onChange={(e) => changeHandler(e, comment, setComment, users, setUsers)}
-              onKeyPress={(e) =>
-                keyPressHandler(
-                  e,
-                  comment,
-                  setComment,
-                  users,
-                  setUsers,
-                  editComment,
-                  setEditComment,
-                  replyComment,
-                  setReplyComment
-                )
-              }
-              ref={inputRef}
-            />
-          </div>
-        </div>
+        <Inputfield
+          comment={comment}
+          changeHandler={changeHandler}
+          setComment={setComment}
+          users={users}
+          setUsers={setUsers}
+          keyPressHandler={keyPressHandler}
+          editComment={editComment}
+          setEditComment={setEditComment}
+          replyComment={replyComment}
+          setReplyComment={setReplyComment}
+          inputRef={inputRef}
+        />
         <div className="widget__comment">
           {/* grandparent */}
           {users.map((user) => (
             <div key={user.id} className="widget__comment-grandparent">
               {/* parent */}
-              {/* <Parent> */}
-              <div className="widget__comment--parent">
-                <div className="widget__comment--parent-icon">
-                  <BiUser />
-                </div>
-                <div className="widget__comment--parent-comment">
-                  <div className="widget__comment--parent-comment-user">
-                    <div className="widget__comment--parent-comment-user-left">
-                      <h1 className="widget__comment--parent-comment-user-left-name">
-                        {user.name}
-                      </h1>
-                      <h1 className="widget__comment--parent-comment-user-left-stamp">
-                        {moment(user.date).fromNow()}
-                      </h1>
-                    </div>
-                    <div className="widget__comment--parent-comment-user-right">
-                      <div
-                        className="widget__comment--parent-comment-user-right-edit"
-                        onClick={() =>
-                          editHandler(
-                            user.id,
-                            users,
-                            setUsers,
-                            setComment,
-                            setEditComment,
-                            inputRef
-                          )
-                        }
-                      >
-                        <AiFillEdit />
-                      </div>
-                      <div
-                        className="widget__comment--parent-comment-user-right-delete"
-                        onClick={() => deleteHandler(user.id, users, setUsers)}
-                      >
-                        <MdDeleteForever />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="widget__comment--parent-comment-message">{user.comment}</div>
-                  <div className="widget__comment--parent-comment-like">
-                    <div className="widget__comment--parent-comment-like-like">
-                      <h1 className="widget__comment--parent-comment-like-like-count">
-                        {user.like}
-                      </h1>
-                      <div
-                        className="widget__comment--parent-comment-like-like-icon"
-                        onClick={() => likeHandler(user.id, users, setUsers)}
-                      >
-                        <AiFillLike />
-                      </div>
-                    </div>
-                    <div className="widget__comment--parent-comment-like-dislike">
-                      <h1 className="widget__comment--parent-comment-like-dislike-count">
-                        {user.disLike}
-                      </h1>
-                      <div
-                        className="widget__comment--parent-comment-like-dislike-icon"
-                        onClick={() => disLikeHandler(user.id, users, setUsers)}
-                      >
-                        <AiFillDislike />
-                      </div>
-                    </div>
-                    <div className="widget__comment--parent-comment-like-reply">
-                      <h1
-                        onClick={() => replyHandler(user.id, inputRef, setReplyComment)}
-                        className="widget__comment--parent-comment-like-reply-in"
-                      >
-                        Reply
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Parent
+                key={user.id}
+                user={user}
+                users={users}
+                setUsers={setUsers}
+                setComment={setComment}
+                setReplyComment={setReplyComment}
+                setEditComment={setEditComment}
+                inputRef={inputRef}
+                deleteHandler={deleteHandler}
+                editHandler={editHandler}
+                likeHandler={likeHandler}
+                disLikeHandler={disLikeHandler}
+                replyHandler={replyHandler}
+              />
+
               {/* child */}
               {user.child.map((data) => (
                 <Child
-                  data={data}
                   key={data.id}
-                  editHandler={editHandler}
+                  data={data}
                   users={users}
                   setUsers={setUsers}
                   setComment={setComment}
+                  setReplyComment={setReplyComment}
                   setEditComment={setEditComment}
                   inputRef={inputRef}
                   deleteHandler={deleteHandler}
+                  editHandler={editHandler}
                   likeHandler={likeHandler}
                   disLikeHandler={disLikeHandler}
                   replyHandler={replyHandler}
-                  setReplyComment={setReplyComment}
                 />
               ))}
             </div>

@@ -4,62 +4,23 @@ import { AiFillLike } from 'react-icons/ai';
 import { AiFillDislike } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
 
-import { IReply, IUser } from '../../interface/obj';
+import { IChild } from '../../interface/obj';
 import moment from 'moment';
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 export const Child = ({
   data,
-  editHandler,
-  deleteHandler,
-  likeHandler,
-  disLikeHandler,
-  replyHandler,
   users,
   setUsers,
   setComment,
-  setEditComment,
   setReplyComment,
+  setEditComment,
   inputRef,
-}: {
-  data: IUser;
-  editHandler: (
-    id: string,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>,
-    setComment: Dispatch<SetStateAction<string>>,
-    setEditComment: Dispatch<React.SetStateAction<boolean>>,
-    inputRef: MutableRefObject<HTMLInputElement | null>
-  ) => void;
-  deleteHandler: (
-    id: string,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>
-  ) => void;
-  likeHandler: (
-    id: string,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>
-  ) => void;
-  disLikeHandler: (
-    id: string,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>
-  ) => void;
-  replyHandler: (
-    id: string,
-    inputRef: MutableRefObject<HTMLInputElement | null>,
-    setReplyComment: Dispatch<React.SetStateAction<IReply>>
-  ) => void;
-  users: IUser[];
-  setUsers: Dispatch<React.SetStateAction<IUser[]>>;
-  setComment: Dispatch<SetStateAction<string>>;
-  setEditComment: Dispatch<React.SetStateAction<boolean>>;
-  setReplyComment: Dispatch<React.SetStateAction<IReply>>;
-  inputRef: MutableRefObject<HTMLInputElement | null>;
-}) => {
-  console.log('changing');
-
+  deleteHandler,
+  editHandler,
+  likeHandler,
+  disLikeHandler,
+  replyHandler,
+}: IChild) => {
   return (
     <div>
       <div key={data.id} className="widget__comment--child">
@@ -129,19 +90,19 @@ export const Child = ({
       <div>
         {data.child.map((data) => (
           <Child
-            data={data}
             key={data.id}
-            editHandler={editHandler}
+            data={data}
             users={users}
             setUsers={setUsers}
             setComment={setComment}
+            setReplyComment={setReplyComment}
             setEditComment={setEditComment}
             inputRef={inputRef}
             deleteHandler={deleteHandler}
+            editHandler={editHandler}
             likeHandler={likeHandler}
             disLikeHandler={disLikeHandler}
             replyHandler={replyHandler}
-            setReplyComment={setReplyComment}
           />
         ))}
       </div>
