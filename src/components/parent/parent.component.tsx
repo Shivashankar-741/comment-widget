@@ -4,7 +4,7 @@ import { AiFillLike } from 'react-icons/ai';
 import { AiFillDislike } from 'react-icons/ai';
 import { MdDeleteForever } from 'react-icons/md';
 
-import { IParent } from '../../interface/obj';
+import { IParent } from 'types';
 import moment from 'moment';
 
 export const Parent = ({

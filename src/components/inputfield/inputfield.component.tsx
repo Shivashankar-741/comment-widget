@@ -1,5 +1,5 @@
 import { FaUsers } from 'react-icons/fa';
-import { IInput } from '../../interface/obj';
+import { IInput } from 'types';
 
 export const Inputfield = ({
   comment,

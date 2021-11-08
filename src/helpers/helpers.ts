@@ -1,4 +1,4 @@
-import { IReply, IUser } from '../interface/obj';
+import { IReply, IUser } from 'types';
 import { v4 as uuidv4 } from 'uuid';
 import { Dispatch, SetStateAction } from 'react';
 

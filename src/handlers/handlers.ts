@@ -1,11 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { IReply, IUser } from '../interface/obj';
-import {
-  likeAndDisLikeHelper,
-  newCommentHelper,
-  editCommentHelper,
-  replyCommentHelper,
-} from '../helpers/helpers';
+import { IReply, IUser } from 'types';
+import { helper } from 'helpers';
 
 export const changeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
@@ -30,11 +25,18 @@ export const keyPressHandler = (
 ) => {
   if (e.key === 'Enter') {
     if (!editComment && !replyComment.isReply) {
-      newCommentHelper(comment, setComment, users, setUsers);
+      helper.newCommentHelper(comment, setComment, users, setUsers);
     } else if (replyComment?.isReply) {
-      replyCommentHelper(replyComment, setReplyComment, comment, setComment, users, setUsers);
+      helper.replyCommentHelper(
+        replyComment,
+        setReplyComment,
+        comment,
+        setComment,
+        users,
+        setUsers
+      );
     } else {
-      editCommentHelper(comment, setComment, users, setUsers, setEditComment);
+      helper.editCommentHelper(comment, setComment, users, setUsers, setEditComment);
     }
   }
 };
@@ -45,7 +47,7 @@ export const likeHandler = (
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   // likeAndDisLikeHelper(id, users, setUsers, 'like');
-  const likedUsers = likeAndDisLikeHelper(id, users, setUsers, 'like');
+  const likedUsers = helper.likeAndDisLikeHelper(id, users, setUsers, 'like');
   setUsers(likedUsers);
 };
 
@@ -55,7 +57,7 @@ export const disLikeHandler = (
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   // likeAndDisLikeHelper(id, users, setUsers, 'disLike');
-  const disLikedUsers = likeAndDisLikeHelper(id, users, setUsers, 'disLike');
+  const disLikedUsers = helper.likeAndDisLikeHelper(id, users, setUsers, 'disLike');
   setUsers(disLikedUsers);
 };
 

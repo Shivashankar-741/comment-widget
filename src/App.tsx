@@ -1,20 +1,9 @@
 import { useRef, useState } from 'react';
 import './styles/App.css';
-import { IUser, IReply, replyObj } from './interface/obj';
-import {
-  changeHandler,
-  keyPressHandler,
-  likeHandler,
-  disLikeHandler,
-  editHandler,
-  deleteHandler,
-  // sortByRecentHandler,
-  // sortByLikesHandler,
-  replyHandler,
-} from './handlers/handlers';
-import { Child } from './components/child/child.component';
-import { Parent } from './components/parent/parent.component';
-import { Inputfield } from './components/inputfield/inputfield';
+import { IUser, IReply } from 'types';
+import { handler } from 'handlers';
+import { Child, Parent, Inputfield } from 'components';
+import { replyObj } from 'utils';
 
 function App() {
   const [comment, setComment] = useState<string>('');
@@ -30,11 +19,11 @@ function App() {
       <div className="widget">
         <Inputfield
           comment={comment}
-          changeHandler={changeHandler}
+          changeHandler={handler.changeHandler}
           setComment={setComment}
           users={users}
           setUsers={setUsers}
-          keyPressHandler={keyPressHandler}
+          keyPressHandler={handler.keyPressHandler}
           editComment={editComment}
           setEditComment={setEditComment}
           replyComment={replyComment}
@@ -55,11 +44,11 @@ function App() {
                 setReplyComment={setReplyComment}
                 setEditComment={setEditComment}
                 inputRef={inputRef}
-                deleteHandler={deleteHandler}
-                editHandler={editHandler}
-                likeHandler={likeHandler}
-                disLikeHandler={disLikeHandler}
-                replyHandler={replyHandler}
+                deleteHandler={handler.deleteHandler}
+                editHandler={handler.editHandler}
+                likeHandler={handler.likeHandler}
+                disLikeHandler={handler.disLikeHandler}
+                replyHandler={handler.replyHandler}
               />
 
               {/* child */}
@@ -73,11 +62,11 @@ function App() {
                   setReplyComment={setReplyComment}
                   setEditComment={setEditComment}
                   inputRef={inputRef}
-                  deleteHandler={deleteHandler}
-                  editHandler={editHandler}
-                  likeHandler={likeHandler}
-                  disLikeHandler={disLikeHandler}
-                  replyHandler={replyHandler}
+                  deleteHandler={handler.deleteHandler}
+                  editHandler={handler.editHandler}
+                  likeHandler={handler.likeHandler}
+                  disLikeHandler={handler.disLikeHandler}
+                  replyHandler={handler.replyHandler}
                 />
               ))}
             </div>
