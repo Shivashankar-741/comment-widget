@@ -1,14 +1,9 @@
 import { BiUser } from 'react-icons/bi';
-import { AiFillEdit } from 'react-icons/ai';
-import { AiFillLike } from 'react-icons/ai';
-import { AiFillDislike } from 'react-icons/ai';
-import { MdDeleteForever } from 'react-icons/md';
-
 import { IChild } from 'types';
-import moment from 'moment';
+import { Layout } from 'components';
 
 export const Child = ({
-  data,
+  user,
   users,
   setUsers,
   setComment,
@@ -23,86 +18,34 @@ export const Child = ({
 }: IChild) => {
   return (
     <div>
-      <div key={data.id} className="widget__comment--child">
+      <div key={user.id} className="widget__comment--child">
         <div className="widget__comment--parent">
           <div className="widget__comment--parent-icon">
             <BiUser />
           </div>
-          <div className="widget__comment--parent-comment">
-            <div className="widget__comment--parent-comment-user">
-              <div className="widget__comment--parent-comment-user-left">
-                <h1 className="widget__comment--parent-comment-user-left-name">{data.name}</h1>
-                <h1 className="widget__comment--parent-comment-user-left-stamp">
-                  {moment(data.date).fromNow()}
-                </h1>
-              </div>
-              <div className="widget__comment--parent-comment-user-right">
-                <div
-                  className="widget__comment--parent-comment-user-right-edit"
-                  onClick={() =>
-                    editHandler(data.id, users, setUsers, setComment, setEditComment, inputRef)
-                  }
-                >
-                  <AiFillEdit />
-                </div>
-                <div
-                  className="widget__comment--parent-comment-user-right-delete"
-                  onClick={() => deleteHandler(data.id, users, setUsers)}
-                >
-                  <MdDeleteForever />
-                </div>
-              </div>
-            </div>
-            <div className="widget__comment--parent-comment-message">
-              {data.parentName !== null ? (
-                <p className="widget__comment--parent-comment-message-pointer">
-                  @{data.parentName + '         '}
-                </p>
-              ) : (
-                ''
-              )}
-              {data.comment}
-            </div>
-            <div className="widget__comment--parent-comment-like">
-              <div className="widget__comment--parent-comment-like-like">
-                <h1 className="widget__comment--parent-comment-like-like-count">{data.like}</h1>
-                <div
-                  className="widget__comment--parent-comment-like-like-icon"
-                  onClick={() => likeHandler(data.id, users, setUsers)}
-                >
-                  <AiFillLike />
-                </div>
-              </div>
-              <div className="widget__comment--parent-comment-like-dislike">
-                <h1 className="widget__comment--parent-comment-like-dislike-count">
-                  {data.disLike}
-                </h1>
-                <div
-                  className="widget__comment--parent-comment-like-dislike-icon"
-                  onClick={() => disLikeHandler(data.id, users, setUsers)}
-                >
-                  <AiFillDislike />
-                </div>
-              </div>
-              <div className="widget__comment--parent-comment-like-reply">
-                <h1
-                  className="widget__comment--parent-comment-like-reply-in"
-                  onClick={() => replyHandler(data.id, data.name, inputRef, setReplyComment)}
-                >
-                  Reply
-                </h1>
-              </div>
-            </div>
-          </div>
+          <Layout
+            user={user}
+            users={users}
+            setUsers={setUsers}
+            setComment={setComment}
+            setEditComment={setEditComment}
+            setReplyComment={setReplyComment}
+            inputRef={inputRef}
+            editHandler={editHandler}
+            deleteHandler={deleteHandler}
+            likeHandler={likeHandler}
+            disLikeHandler={disLikeHandler}
+            replyHandler={replyHandler}
+          />
         </div>
       </div>
       <div>
-        {data.child.map(
-          (data) =>
-            data && (
+        {user.child.map(
+          (user) =>
+            user && (
               <Child
-                key={data.id}
-                data={data}
+                key={user.id}
+                user={user}
                 users={users}
                 setUsers={setUsers}
                 setComment={setComment}

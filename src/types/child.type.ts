@@ -2,7 +2,7 @@ import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { IReply, IUser } from 'types';
 
 export interface IChild {
-  data: IUser;
+  user: IUser;
   users: IUser[];
   setUsers: Dispatch<React.SetStateAction<IUser[]>>;
   setComment: Dispatch<SetStateAction<string>>;

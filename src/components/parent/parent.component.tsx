@@ -1,11 +1,6 @@
 import { BiUser } from 'react-icons/bi';
-import { AiFillEdit } from 'react-icons/ai';
-import { AiFillLike } from 'react-icons/ai';
-import { AiFillDislike } from 'react-icons/ai';
-import { MdDeleteForever } from 'react-icons/md';
-
 import { IParent } from 'types';
-import moment from 'moment';
+import { Layout } from 'components';
 
 export const Parent = ({
   user,
@@ -26,61 +21,20 @@ export const Parent = ({
       <div className="widget__comment--parent-icon">
         <BiUser />
       </div>
-      <div className="widget__comment--parent-comment">
-        <div className="widget__comment--parent-comment-user">
-          <div className="widget__comment--parent-comment-user-left">
-            <h1 className="widget__comment--parent-comment-user-left-name">{user.name}</h1>
-            <h1 className="widget__comment--parent-comment-user-left-stamp">
-              {moment(user.date).fromNow()}
-            </h1>
-          </div>
-          <div className="widget__comment--parent-comment-user-right">
-            <div
-              className="widget__comment--parent-comment-user-right-edit"
-              onClick={() =>
-                editHandler(user.id, users, setUsers, setComment, setEditComment, inputRef)
-              }
-            >
-              <AiFillEdit />
-            </div>
-            <div
-              className="widget__comment--parent-comment-user-right-delete"
-              onClick={() => deleteHandler(user.id, users, setUsers)}
-            >
-              <MdDeleteForever />
-            </div>
-          </div>
-        </div>
-        <div className="widget__comment--parent-comment-message">{user.comment}</div>
-        <div className="widget__comment--parent-comment-like">
-          <div className="widget__comment--parent-comment-like-like">
-            <h1 className="widget__comment--parent-comment-like-like-count">{user.like}</h1>
-            <div
-              className="widget__comment--parent-comment-like-like-icon"
-              onClick={() => likeHandler(user.id, users, setUsers)}
-            >
-              <AiFillLike />
-            </div>
-          </div>
-          <div className="widget__comment--parent-comment-like-dislike">
-            <h1 className="widget__comment--parent-comment-like-dislike-count">{user.disLike}</h1>
-            <div
-              className="widget__comment--parent-comment-like-dislike-icon"
-              onClick={() => disLikeHandler(user.id, users, setUsers)}
-            >
-              <AiFillDislike />
-            </div>
-          </div>
-          <div className="widget__comment--parent-comment-like-reply">
-            <h1
-              onClick={() => replyHandler(user.id, user.name, inputRef, setReplyComment)}
-              className="widget__comment--parent-comment-like-reply-in"
-            >
-              Reply
-            </h1>
-          </div>
-        </div>
-      </div>
+      <Layout
+        user={user}
+        users={users}
+        setUsers={setUsers}
+        setComment={setComment}
+        setEditComment={setEditComment}
+        setReplyComment={setReplyComment}
+        inputRef={inputRef}
+        editHandler={editHandler}
+        deleteHandler={deleteHandler}
+        likeHandler={likeHandler}
+        disLikeHandler={disLikeHandler}
+        replyHandler={replyHandler}
+      />
     </div>
   );
 };

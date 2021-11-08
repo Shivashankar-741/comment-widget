@@ -53,11 +53,11 @@ function App() {
 
               {/* child */}
               {user?.child.map(
-                (data) =>
-                  data && (
+                (user) =>
+                  user && (
                     <Child
-                      key={data.id}
-                      data={data}
+                      key={user.id}
+                      user={user}
                       users={users}
                       setUsers={setUsers}
                       setComment={setComment}
