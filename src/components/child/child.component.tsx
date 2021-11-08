@@ -53,7 +53,16 @@ export const Child = ({
                 </div>
               </div>
             </div>
-            <div className="widget__comment--parent-comment-message">{data.comment}</div>
+            <div className="widget__comment--parent-comment-message">
+              {data.parentName !== null ? (
+                <p className="widget__comment--parent-comment-message-pointer">
+                  @{data.parentName + '         '}
+                </p>
+              ) : (
+                ''
+              )}
+              {data.comment}
+            </div>
             <div className="widget__comment--parent-comment-like">
               <div className="widget__comment--parent-comment-like-like">
                 <h1 className="widget__comment--parent-comment-like-like-count">{data.like}</h1>
@@ -78,7 +87,7 @@ export const Child = ({
               <div className="widget__comment--parent-comment-like-reply">
                 <h1
                   className="widget__comment--parent-comment-like-reply-in"
-                  onClick={() => replyHandler(data.id, inputRef, setReplyComment)}
+                  onClick={() => replyHandler(data.id, data.name, inputRef, setReplyComment)}
                 >
                   Reply
                 </h1>

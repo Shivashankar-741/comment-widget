@@ -33,6 +33,7 @@ export interface IParent {
   ) => void;
   replyHandler: (
     id: string,
+    name: string | null,
     inputRef: MutableRefObject<HTMLInputElement | null>,
     setReplyComment: Dispatch<React.SetStateAction<IReply>>
   ) => void;

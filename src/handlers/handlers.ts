@@ -63,11 +63,13 @@ export const disLikeHandler = (
 
 export const replyHandler = (
   id: string,
+  name: string | null,
   inputRef: MutableRefObject<HTMLInputElement | null>,
   setReplyComment: Dispatch<React.SetStateAction<IReply>>
 ) => {
   inputRef.current?.focus();
-  setReplyComment({ isReply: true, id });
+  console.log(id);
+  setReplyComment({ isReply: true, id, name });
 };
 
 export const editHandler = (

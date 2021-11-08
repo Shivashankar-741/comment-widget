@@ -148,3 +148,9 @@
   max-width: 90%;
   margin: 0 auto;
 }
+
+.widget__comment--parent-comment-message-pointer {
+  display: inline-block;
+  color: rgb(221, 131, 131);
+  margin-right: 5px;
+}

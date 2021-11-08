@@ -7,4 +7,5 @@ export interface IUser {
   date: Date;
   child: IUser[];
   isEdit: boolean;
+  parentName: string | null;
 }

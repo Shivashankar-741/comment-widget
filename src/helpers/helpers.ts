@@ -61,6 +61,7 @@ export const newCommentHelper = (
           date: new Date(),
           child: [],
           isEdit: false,
+          parentName: null,
         },
       ]);
     }
@@ -114,7 +115,7 @@ export const replyCommentHelper = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  const { id: parentCommentId } = replyComment;
+  const { id: parentId, name: parentName } = replyComment;
 
   let childComment: IUser;
 
@@ -130,6 +131,7 @@ export const replyCommentHelper = (
         date: new Date(),
         child: [],
         isEdit: false,
+        parentName,
       };
     }
     setComment('');
@@ -138,7 +140,7 @@ export const replyCommentHelper = (
   }
 
   // const u = users?.reduce((acc: IUser[], user: IUser) => {
-  //   if (user.id === parentCommentId) {
+  //   if (user.id === parentId) {
   //     if (!!childComment) user?.child.push(childComment);
   //     acc?.push(user);
   //   } else {
@@ -159,8 +161,8 @@ export const replyCommentHelper = (
     });
   }
 
-  child(users, parentCommentId);
+  child(users, parentId);
 
   setUsers(users);
-  setReplyComment({ isReply: false, id: '' });
+  setReplyComment({ isReply: false, id: '', name: null });
 };

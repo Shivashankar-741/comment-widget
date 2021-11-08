@@ -73,7 +73,7 @@ export const Parent = ({
           </div>
           <div className="widget__comment--parent-comment-like-reply">
             <h1
-              onClick={() => replyHandler(user.id, inputRef, setReplyComment)}
+              onClick={() => replyHandler(user.id, user.name, inputRef, setReplyComment)}
               className="widget__comment--parent-comment-like-reply-in"
             >
               Reply
