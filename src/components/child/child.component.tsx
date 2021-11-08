@@ -1,5 +1,4 @@
-import { BiUser } from 'react-icons/bi';
-import { IChild } from 'types';
+import { IParent } from 'types';
 import { Layout } from 'components';
 
 export const Child = ({
@@ -15,7 +14,7 @@ export const Child = ({
   likeHandler,
   disLikeHandler,
   replyHandler,
-}: IChild) => {
+}: IParent) => {
   return (
     <div>
       <div key={user.id} className="widget__comment--child">

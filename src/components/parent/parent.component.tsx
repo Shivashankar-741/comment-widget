@@ -1,4 +1,3 @@
-import { BiUser } from 'react-icons/bi';
 import { IParent } from 'types';
 import { Layout } from 'components';
 
