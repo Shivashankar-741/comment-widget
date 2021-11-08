@@ -4,10 +4,7 @@ import { helper } from 'helpers';
 
 export const changeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
-  comment: string,
-  setComment: Dispatch<SetStateAction<string>>,
-  users: IUser[],
-  setUsers: Dispatch<React.SetStateAction<IUser[]>>
+  setComment: Dispatch<SetStateAction<string>>
 ) => {
   setComment(e.target.value);
 };
@@ -46,7 +43,6 @@ export const likeHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  // likeAndDisLikeHelper(id, users, setUsers, 'like');
   const likedUsers = helper.likeAndDisLikeHelper(id, users, setUsers, 'like');
   setUsers(likedUsers);
 };
@@ -56,7 +52,6 @@ export const disLikeHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  // likeAndDisLikeHelper(id, users, setUsers, 'disLike');
   const disLikedUsers = helper.likeAndDisLikeHelper(id, users, setUsers, 'disLike');
   setUsers(disLikedUsers);
 };
@@ -68,7 +63,6 @@ export const replyHandler = (
   setReplyComment: Dispatch<React.SetStateAction<IReply>>
 ) => {
   inputRef.current?.focus();
-  console.log(id);
   setReplyComment({ isReply: true, id, name });
 };
 
@@ -93,8 +87,6 @@ export const editHandler = (
   }
   child(users);
 
-  console.log(comment);
-
   if (comment) {
     comment.isEdit = true;
     setComment(comment.comment);
@@ -113,7 +105,6 @@ export const deleteHandler = (
   function childTwo(users: IUser[], id: string, ind: number) {
     users.forEach((user: IUser) => {
       if (user.id === id) {
-        console.log(user.child[ind]);
         return user.child.splice(ind, 1);
       } else if (user.child.length) {
         childTwo(user.child, id, ind);
@@ -137,7 +128,6 @@ export const deleteHandler = (
     });
   }
   child(users);
-  console.log(users);
   // setUsers(users);
 };
 
@@ -158,22 +148,3 @@ export const sortByLikesHandler = (
   const sortedComments = users.sort((a, b) => b.like - a.like);
   setUsers(sortedComments);
 };
-
-export const replyChildHandler = (childId: string) => {
-  console.log(childId);
-};
-
-// user = ;
-//  user = {
-//   name: 'string | null',
-//   comment: 'string',
-//   id: 'string',
-//   like: 12,
-//   disLike: 21,
-//   date: 'Sat Nov 06 2021 13:20:44 GMT+0530',
-//   child: [],
-//   isEdit: false,
-// };
-
-//   !Object.keys({}).length
-//    true

@@ -13,10 +13,7 @@ export interface IInput {
   inputRef: MutableRefObject<HTMLInputElement | null>;
   changeHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
-    comment: string,
-    setComment: Dispatch<SetStateAction<string>>,
-    users: IUser[],
-    setUsers: Dispatch<React.SetStateAction<IUser[]>>
+    setComment: Dispatch<SetStateAction<string>>
   ) => void;
   keyPressHandler: (
     e: React.KeyboardEvent<HTMLInputElement>,

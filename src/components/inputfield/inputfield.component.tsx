@@ -25,7 +25,7 @@ export const Inputfield = ({
           className="widget__input--field-in"
           placeholder="Join the discussion..."
           value={comment}
-          onChange={(e) => changeHandler(e, comment, setComment, users, setUsers)}
+          onChange={(e) => changeHandler(e, setComment)}
           onKeyPress={(e) =>
             keyPressHandler(
               e,

@@ -12,8 +12,6 @@ function App() {
   const [users, setUsers] = useState<IUser[] | []>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  console.log(users);
-
   return (
     <div className="App">
       <div className="widget">
