@@ -17,24 +17,19 @@ export const Parent = ({
   replyHandler,
 }: IParent) => {
   return (
-    <div className="widget__comment--parent">
-      <div className="widget__comment--parent-icon">
-        <BiUser />
-      </div>
-      <Layout
-        user={user}
-        users={users}
-        setUsers={setUsers}
-        setComment={setComment}
-        setEditComment={setEditComment}
-        setReplyComment={setReplyComment}
-        inputRef={inputRef}
-        editHandler={editHandler}
-        deleteHandler={deleteHandler}
-        likeHandler={likeHandler}
-        disLikeHandler={disLikeHandler}
-        replyHandler={replyHandler}
-      />
-    </div>
+    <Layout
+      user={user}
+      users={users}
+      setUsers={setUsers}
+      setComment={setComment}
+      setEditComment={setEditComment}
+      setReplyComment={setReplyComment}
+      inputRef={inputRef}
+      editHandler={editHandler}
+      deleteHandler={deleteHandler}
+      likeHandler={likeHandler}
+      disLikeHandler={disLikeHandler}
+      replyHandler={replyHandler}
+    />
   );
 };

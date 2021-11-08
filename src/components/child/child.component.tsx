@@ -19,25 +19,20 @@ export const Child = ({
   return (
     <div>
       <div key={user.id} className="widget__comment--child">
-        <div className="widget__comment--parent">
-          <div className="widget__comment--parent-icon">
-            <BiUser />
-          </div>
-          <Layout
-            user={user}
-            users={users}
-            setUsers={setUsers}
-            setComment={setComment}
-            setEditComment={setEditComment}
-            setReplyComment={setReplyComment}
-            inputRef={inputRef}
-            editHandler={editHandler}
-            deleteHandler={deleteHandler}
-            likeHandler={likeHandler}
-            disLikeHandler={disLikeHandler}
-            replyHandler={replyHandler}
-          />
-        </div>
+        <Layout
+          user={user}
+          users={users}
+          setUsers={setUsers}
+          setComment={setComment}
+          setEditComment={setEditComment}
+          setReplyComment={setReplyComment}
+          inputRef={inputRef}
+          editHandler={editHandler}
+          deleteHandler={deleteHandler}
+          likeHandler={likeHandler}
+          disLikeHandler={disLikeHandler}
+          replyHandler={replyHandler}
+        />
       </div>
       <div>
         {user.child.map(
