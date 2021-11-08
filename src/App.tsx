@@ -52,23 +52,26 @@ function App() {
               />
 
               {/* child */}
-              {user.child.map((data) => (
-                <Child
-                  key={data.id}
-                  data={data}
-                  users={users}
-                  setUsers={setUsers}
-                  setComment={setComment}
-                  setReplyComment={setReplyComment}
-                  setEditComment={setEditComment}
-                  inputRef={inputRef}
-                  deleteHandler={handler.deleteHandler}
-                  editHandler={handler.editHandler}
-                  likeHandler={handler.likeHandler}
-                  disLikeHandler={handler.disLikeHandler}
-                  replyHandler={handler.replyHandler}
-                />
-              ))}
+              {user?.child.map(
+                (data) =>
+                  data && (
+                    <Child
+                      key={data.id}
+                      data={data}
+                      users={users}
+                      setUsers={setUsers}
+                      setComment={setComment}
+                      setReplyComment={setReplyComment}
+                      setEditComment={setEditComment}
+                      inputRef={inputRef}
+                      deleteHandler={handler.deleteHandler}
+                      editHandler={handler.editHandler}
+                      likeHandler={handler.likeHandler}
+                      disLikeHandler={handler.disLikeHandler}
+                      replyHandler={handler.replyHandler}
+                    />
+                  )
+              )}
             </div>
           ))}
         </div>

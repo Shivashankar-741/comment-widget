@@ -151,9 +151,9 @@ export const replyCommentHelper = (
 
   function child(users: IUser[], id: string) {
     users.forEach((user) => {
-      if (user.id === id) {
+      if (user && user.id === id) {
         user.child.push(childComment);
-      } else if (user.child.length) {
+      } else if (user && user.child.length) {
         child(user.child, id);
       }
     });

@@ -88,23 +88,26 @@ export const Child = ({
         </div>
       </div>
       <div>
-        {data.child.map((data) => (
-          <Child
-            key={data.id}
-            data={data}
-            users={users}
-            setUsers={setUsers}
-            setComment={setComment}
-            setReplyComment={setReplyComment}
-            setEditComment={setEditComment}
-            inputRef={inputRef}
-            deleteHandler={deleteHandler}
-            editHandler={editHandler}
-            likeHandler={likeHandler}
-            disLikeHandler={disLikeHandler}
-            replyHandler={replyHandler}
-          />
-        ))}
+        {data.child.map(
+          (data) =>
+            data && (
+              <Child
+                key={data.id}
+                data={data}
+                users={users}
+                setUsers={setUsers}
+                setComment={setComment}
+                setReplyComment={setReplyComment}
+                setEditComment={setEditComment}
+                inputRef={inputRef}
+                deleteHandler={deleteHandler}
+                editHandler={editHandler}
+                likeHandler={likeHandler}
+                disLikeHandler={disLikeHandler}
+                replyHandler={replyHandler}
+              />
+            )
+        )}
       </div>
     </div>
   );
