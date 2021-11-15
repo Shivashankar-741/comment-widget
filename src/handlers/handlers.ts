@@ -128,23 +128,51 @@ export const deleteHandler = (
     });
   }
   child(users);
-  // setUsers(users);
+  setUsers(users);
 };
 
 export const sortByRecentHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
+  console.log('from recent handler');
+
   const sortedComments = users.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  setUsers(sortedComments);
+  console.log(sortedComments);
+  setUsers([...sortedComments]);
 };
 
 export const sortByLikesHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
+  console.log('from like handler');
+
   const sortedComments = users.sort((a, b) => b.like - a.like);
-  setUsers(sortedComments);
+  console.log(sortedComments);
+  setUsers([...sortedComments]);
+};
+
+export const selectHandler = (
+  e: React.ChangeEvent<HTMLSelectElement>,
+  users: IUser[],
+  setUsers: Dispatch<React.SetStateAction<IUser[]>>
+) => {
+  const { value } = e.target;
+  switch (value) {
+    case 'head':
+      break;
+    case 'date':
+      sortByRecentHandler(users, setUsers);
+      break;
+    case 'like':
+      sortByLikesHandler(users, setUsers);
+      break;
+    case 'tail':
+      break;
+    default:
+      break;
+  }
 };

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import './styles/App.css';
 import { IUser, IReply } from 'types';
 import { handler } from 'handlers';
-import { Child, Parent, Inputfield } from 'components';
+import { Child, Parent, Inputfield, Dropdown } from 'components';
 import { replyObj } from 'utils';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <div className="widget">
+        <Dropdown users={users} setUsers={setUsers} />
         <Inputfield
           comment={comment}
           changeHandler={handler.changeHandler}
