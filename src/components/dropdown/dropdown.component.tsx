@@ -8,9 +8,8 @@ export const Dropdown = ({ users, setUsers }: IDropDown) => {
         onChange={(e) => handler.selectHandler(e, users, setUsers)}
         className="dropdown__select"
       >
-        <option value="head">sort</option>
-        <option value="date">by date</option>
-        <option value="like">by likes</option>
+        <option value="date">by recent</option>
+        <option value="like">by like</option>
       </select>
     </div>
   );

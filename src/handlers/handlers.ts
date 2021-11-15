@@ -128,7 +128,7 @@ export const deleteHandler = (
     });
   }
   child(users);
-  setUsers(users);
+  setUsers([...users]);
 };
 
 export const sortByRecentHandler = (
@@ -136,7 +136,7 @@ export const sortByRecentHandler = (
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
   const sortedComments = users.sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
   console.log(sortedComments);
   setUsers([...sortedComments]);
