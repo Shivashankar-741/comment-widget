@@ -11,7 +11,6 @@ export const Dropdown = ({ users, setUsers }: IDropDown) => {
         <option value="head">sort</option>
         <option value="date">by date</option>
         <option value="like">by likes</option>
-        <option value="tail">none</option>
       </select>
     </div>
   );

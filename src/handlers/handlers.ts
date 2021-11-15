@@ -135,10 +135,8 @@ export const sortByRecentHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  console.log('from recent handler');
-
   const sortedComments = users.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   );
   console.log(sortedComments);
   setUsers([...sortedComments]);
@@ -148,8 +146,6 @@ export const sortByLikesHandler = (
   users: IUser[],
   setUsers: Dispatch<React.SetStateAction<IUser[]>>
 ) => {
-  console.log('from like handler');
-
   const sortedComments = users.sort((a, b) => b.like - a.like);
   console.log(sortedComments);
   setUsers([...sortedComments]);
